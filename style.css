@@ -1,0 +1,184 @@
+/* --- Base & Dark Theme Variables --- */
+:root {
+    --bg-color: #1a1a1a;        /* Dark background */
+    --widget-bg: #2c2c2c;     /* Slightly lighter widget background */
+    --input-bg: #3a3a3a;      /* Input background */
+    --text-color: #e0e0e0;     /* Light text */
+    --text-muted: #a0a0a0;    /* Lighter gray for hints/muted text */
+    --border-color: #555555;  /* Border color */
+    --accent-color: #007bff;   /* Button/accent color (can adjust) */
+    --accent-hover: #0056b3; /* Button hover */
+    --error-color: #ff6b6b;   /* Light red for errors */
+    --warning-color: #ffa500; /* Orange for warnings */
+    --legend-color: #b0b0b0; /* Color for fieldset legends */
+}
+
+/* --- General Styles --- */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align top */
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 30px 15px; /* Add more padding */
+    box-sizing: border-box;
+    line-height: 1.6;
+}
+
+.calculator-widget {
+    background-color: var(--widget-bg);
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+    border: 1px solid var(--border-color);
+}
+
+h1 {
+    text-align: center;
+    color: var(--text-color);
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 1.6em;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+/* --- Form Elements --- */
+.form-group {
+    margin-bottom: 18px; /* Slightly more spacing */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.95em;
+}
+
+.form-group label small {
+    font-weight: 400;
+    color: var(--text-muted);
+    opacity: 0.8;
+}
+
+.form-group input[type="number"],
+.form-group select {
+    width: 100%;
+    padding: 10px 12px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input[type="number"]:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Subtle focus ring */
+}
+
+/* Style placeholder text */
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--text-muted);
+  opacity: 0.7; /* Firefox */
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: var(--text-muted);
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: var(--text-muted);
+}
+
+/* Fieldset and Legend for Organization */
+fieldset.input-section {
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 15px 20px 10px 20px; /* top left/right bottom left/right */
+    margin-bottom: 25px;
+}
+
+legend {
+    font-weight: 600;
+    color: var(--legend-color);
+    padding: 0 10px; /* Space around legend text */
+    margin-left: 5px; /* Align with padding */
+    font-size: 1.05em;
+}
+
+.field-hint {
+    display: block;
+    font-size: 0.85em;
+    color: var(--text-muted);
+    margin-top: 4px;
+    opacity: 0.9;
+}
+
+
+/* --- Button --- */
+button {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-top: 10px; /* Reduced margin as fieldset adds space */
+}
+
+button:hover {
+    background-color: var(--accent-hover);
+}
+button:active {
+    transform: scale(0.99); /* Slight press effect */
+}
+
+
+/* --- Result Area --- */
+.result {
+    margin-top: 25px;
+    padding: 15px 20px;
+    background-color: var(--input-bg); /* Use input bg for contrast */
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    min-height: 50px;
+    color: var(--text-color);
+}
+
+.result p {
+    margin: 8px 0; /* Consistent spacing */
+    word-wrap: break-word; /* Prevent overflow */
+}
+
+.result strong {
+    color: #ffffff; /* Make labels stand out more */
+    font-weight: 600;
+}
+
+/* Style for errors shown in the result div */
+.result.error p {
+    color: var(--error-color) !important; /* Ensure error color overrides */
+    font-weight: 600;
+}
+
+/* Style for warnings shown in the result div (added via JS) */
+.result p.warning-message {
+    color: var(--warning-color);
+    font-weight: bold;
+    margin-top: 10px;
+}

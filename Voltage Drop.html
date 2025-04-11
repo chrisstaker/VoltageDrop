@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voltage Drop Calculator - Dark Theme</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="calculator-widget">
+    <h1>Voltage Drop Calculator</h1>
+
+    <form id="voltageDropForm">
+
+        <fieldset class="input-section">
+            <legend>Core Circuit Parameters</legend>
+            <div class="form-group">
+                <label for="voltage">Source Voltage (V):</label>
+                <input type="number" id="voltage" required step="0.1" placeholder="e.g., 120">
+            </div>
+
+            <div class="form-group">
+                <label for="current">Current (Amps):</label>
+                <input type="number" id="current" required step="0.01" placeholder="e.g., 15">
+            </div>
+
+            <div class="form-group">
+                <label for="material">Conductor Material:</label>
+                <select id="material" required>
+                    <option value="copper" selected>Copper</option>
+                    <option value="aluminum">Aluminum</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="phase">Phase:</label>
+                <select id="phase" required>
+                    <option value="single" selected>Single Phase</option>
+                    <option value="three">Three Phase</option>
+                </select>
+            </div>
+        </fieldset>
+
+        <fieldset class="input-section">
+            <legend>Adjustable Parameters (Provide One or Both)</legend>
+             <div class="form-group">
+                <label for="wireSize">Wire Size (AWG/kcmil): <small>[Known Size]</small></label>
+                <select id="wireSize">
+                     <option value="">-- Calculate Recommended --</option>
+                    </select>
+                <small class="field-hint">Select size to calculate VD or Max Length.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="length">One-Way Wire Length (Feet): <small>[Known Length]</small></label>
+                <input type="number" id="length" step="1" placeholder="e.g., 150">
+                 <small class="field-hint">Enter length to calculate VD or Recommended Size.</small>
+            </div>
+        </fieldset>
+
+         <fieldset class="input-section">
+            <legend>Calculation Target</legend>
+            <div class="form-group">
+                <label for="targetVDPercent">Target Max Voltage Drop (%):</label>
+                <input type="number" id="targetVDPercent" step="0.1" value="3.0" placeholder="e.g., 3">
+                 <small class="field-hint">Used when calculating size or length.</small>
+            </div>
+        </fieldset>
+
+
+        <button type="button" id="calculateBtn">Calculate</button>
+
+        <div id="result" class="result">
+            </div>
+    </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
